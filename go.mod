@@ -1,3 +1,3 @@
-module github.com/go-utils/httpReq
+module github.com/GriffyHome/go-utils/httpReq
 
 go 1.21
