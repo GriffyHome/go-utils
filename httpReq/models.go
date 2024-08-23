@@ -1,4 +1,4 @@
-package httpUtils
+package httpReq
 
 import (
 	"net/http"
@@ -13,7 +13,7 @@ type PostRequestConfig struct {
 	Headers        map[string]string
 }
 
-type GetRequestConfig struct{
+type GetRequestConfig struct {
 	Url            string
 	ExpectedStatus int
 	ResponseType   interface{}

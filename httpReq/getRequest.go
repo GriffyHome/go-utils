@@ -1,4 +1,4 @@
-package httpUtils
+package httpReq
 
 import (
 	"encoding/json"

@@ -1,3 +1,3 @@
-module github.com/akash-griffy/http-utils
+module github.com/go-utils/httpReq
 
-go 1.21.10
+go 1.21
