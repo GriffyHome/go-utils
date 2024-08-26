@@ -9,15 +9,13 @@ import (
 
 func (c *Client) Get(requestConfig GetRequestConfig) error {
 
-	//added for testing tag changes
-
 	//parsing the url from url string
 	parsedURL, err := url.Parse(requestConfig.Url)
 	if err != nil {
 		return fmt.Errorf("failed to parse URL err :: %w", err)
 	}
 
-	//add the query params 
+	//add the query params
 	query := parsedURL.Query()
 	for key, value := range requestConfig.QueryParams {
 		query.Add(key, value)
