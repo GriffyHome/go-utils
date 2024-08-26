@@ -9,6 +9,8 @@ import (
 
 func (c *Client) Get(requestConfig GetRequestConfig) error {
 
+	//testing
+
 	//parsing the url from url string
 	parsedURL, err := url.Parse(requestConfig.Url)
 	if err != nil {
