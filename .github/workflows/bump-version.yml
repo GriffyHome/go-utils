@@ -24,8 +24,8 @@ jobs:
           fi
           echo "Bumping version to $NEW_TAG"
 
-          git config --local user.name "akash-griffy"
-          git config --local user.email "akash@griffy.app"
+          git config --local user.name "GitHub Actions"
+          git config --local user.email "github-actions@users.noreply.github.com"
 
           git tag $NEW_TAG
           git push origin $NEW_TAG
