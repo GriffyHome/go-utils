@@ -21,6 +21,10 @@ type GetRequestConfig struct {
 	QueryParams    map[string]string
 }
 
+type Validate interface {
+	ValidateSelf() error
+}
+
 type Client struct {
 	*http.Client
 }

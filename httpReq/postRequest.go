@@ -5,10 +5,8 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
-	 
 )
 
- 
 func (c *Client) Post(requestConfig PostRequestConfig) error {
 
 	//marshal the body
@@ -40,7 +38,17 @@ func (c *Client) Post(requestConfig PostRequestConfig) error {
 		return fmt.Errorf("got unexpected response code. Expected :: %d got :: %s", requestConfig.ExpectedStatus, resp.Status)
 	}
 
-	
-	//decode the body return err/nil
-	return json.NewDecoder(resp.Body).Decode(requestConfig.ResponseType)
+	// Decode the response into the provided ResponseType
+	if err := json.NewDecoder(resp.Body).Decode(requestConfig.ResponseType); err != nil {
+		return fmt.Errorf("failed to decode response body: %w", err)
+	}
+
+	// Validate the response if it implements the Validatable interface
+	if validatable, ok := requestConfig.ResponseType.(Validate); ok {
+		if err := validatable.ValidateSelf(); err != nil {
+			return err
+		}
+	}
+
+	return nil
 }
